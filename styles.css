@@ -51,13 +51,25 @@ html{
 
 .nav-menu > a{
     text-decoration: none;
-    color: var(--main-text-color);
     color: gray;
     font-size: large;
 }
 
 .nav-menu > a:hover{
     color: white;
+}
+
+.social-media{
+    display: flex;
+    gap: 40px;
+    position: absolute;
+    bottom: 15%;
+    left: 27%;
+    font-size: 1.52rem;
+}
+
+.social-media i:hover{
+    cursor: pointer;
 }
 
 .info-container{
