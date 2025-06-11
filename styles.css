@@ -14,6 +14,7 @@
 
 html{
     scroll-behavior: smooth;
+    scrollbar-width: none;
 }
 
 .main-container{
@@ -85,6 +86,10 @@ html{
     gap: 20px;
 }
 
+    #about > h3, #experience > h3, #projects > h3, #skills > h3{
+        display: none;
+    }
+
 #about p, #experience p, #projects p, #skills p{
     margin-top: 10px;
     line-height: 25px;
@@ -117,4 +122,29 @@ html{
 .skills-card li{
     margin-top: 10px;
     color: gray;
+}
+
+@media screen and (max-width: 435px) {
+    .main-container{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        'nav'
+        'info'
+        ;
+    }
+
+    .nav-container{
+        position: relative;
+        width: 100%;
+    }
+
+    #about, #experience, #projects, #skills{
+        height: auto;
+        gap: 5px;
+    }
+
+    #about > h3, #experience > h3, #projects > h3, #skills > h3{
+        display: block;
+    }
 }
