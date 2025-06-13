@@ -1,26 +1,33 @@
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add('visible')
-        }
-    })
-}, {
-    threshold : 0.1
-})
+// Fade-in animation
+const fadeObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  },
+  { threshold: 0.1 }
+);
 
+document.querySelectorAll(".fade-in, .experience-card, .projects-card, .skills-card")
+  .forEach(el => fadeObserver.observe(el));
 
-document.querySelectorAll('.fade-in').forEach((section) =>{
-    observer.observe(section)
-})
+const navObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll(".nav-menu a").forEach(a => a.classList.remove("active"));
+        const id = entry.target.id;
+        const link = document.querySelector(`.nav-menu a[href="#${id}"]`);
+        if (link) link.classList.add("active");
+      }
+    });
+  },
+  { threshold: 0.5 }
+);
 
-document.querySelectorAll('.experience-card').forEach((section) =>{
-    observer.observe(section)
-})
-
-document.querySelectorAll('.projects-card').forEach((section) =>{
-    observer.observe(section)
-})
-
-document.querySelectorAll('.skills-card').forEach((section) =>{
-    observer.observe(section)
-})
+["about", "experience", "projects", "skills"].forEach(id => {
+  const section = document.getElementById(id);
+  if (section) navObserver.observe(section);
+});

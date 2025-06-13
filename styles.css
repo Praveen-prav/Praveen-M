@@ -86,9 +86,13 @@ html{
     gap: 20px;
 }
 
-    #about > h3, #experience > h3, #projects > h3, #skills > h3{
-        display: none;
-    }
+.nav-menu a.active{
+    color: white;
+}
+
+#about > h3, #experience > h3, #projects > h3, #skills > h3{
+    display: none;
+}
 
 #about p, #experience p, #projects p, #skills p{
     margin-top: 10px;
@@ -124,6 +128,18 @@ html{
     color: gray;
 }
 
+
+.fade-in, .experience-card, .projects-card, .skills-card{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible, .experience-card.visible, .projects-card.visible, .skills-card.visible{
+    opacity: 1;
+    transform: translateY(0);
+}
+
 @media screen and (max-width: 500px) {
     .main-container{
         min-height: 100vh;
@@ -140,9 +156,36 @@ html{
         width: 100%;
     }
 
+    .nav-menu{
+        display: none;
+    }
+
     #about, #experience, #projects, #skills{
         height: auto;
         gap: 5px;
+    }
+
+    #skills{
+        display: grid;
+        grid-template-rows: 100px 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+        'title title'
+        'languages frameworks'
+        ;
+    }
+
+    #skills > h3{
+        grid-area: title;
+        text-align: center;
+    }
+
+    #skills:nth-child(1){
+        grid-area: languages;
+    }
+
+    #skills:nth-child(2){
+        grid-area: frameworkss;
     }
 
     #about > h3, #experience > h3, #projects > h3, #skills > h3{
@@ -150,7 +193,7 @@ html{
         margin-top: 30px;
     }
 
-    .fade-in, .experience-card, .projects-card, .skills-card{
+    /* .fade-in, .experience-card, .projects-card, .skills-card{
         opacity: 0;
         transform: translateY(40px);
         transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -159,5 +202,5 @@ html{
     .fade-in.visible, .experience-card.visible, .projects-card.visible, .skills-card.visible{
         opacity: 1;
         transform: translateY(0);
-    }
+    } */
 }
