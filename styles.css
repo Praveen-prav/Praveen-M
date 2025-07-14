@@ -121,11 +121,18 @@ html{
 
 .skills-card ul{
     list-style: none;
+    display: flex;
+    gap: 10px;
 }
 
 .skills-card li{
     margin-top: 10px;
     color: gray;
+    padding: 0px 20px 0px 20px;
+}
+
+.skills-card li:not(:last-child){
+    border-right: 1px solid rgba(255, 255, 255, 0.536);
 }
 
 
