@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <title>Praveen M</title>
+    <title>Praveen M | Front-End Engineer</title>
 </head>
+
 <body>
-    <div class="main-container">
-        <div class="nav-container">
+    <main class="main-container">
+        <nav class="nav-container">
             <div class="main-card">
                 <h1>Praveen M</h1>
                 <h2>SDE and Front-End Engineer</h2>
@@ -19,96 +28,167 @@
                     <a href="#experience">Experience</a>
                     <a href="#projects">Works</a>
                     <a href="#skills">Skills</a>
+                    <a href="#contact">Contact</a>
                 </div>
             </div>
             <div class="social-media">
-                <a href="https://www.linkedin.com/in/praveen-mukthi"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/Praveen-prav">
+                <a href="https://www.linkedin.com/in/praveen-mukthi" target="_blank" aria-label="LinkedIn"><i
+                        class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/Praveen-prav" target="_blank" aria-label="GitHub">
                     <i class="fab fa-github"></i>
                 </a>
-                <a href="https://www.instagram.com/p_r_a_v_e_e_n__p_r_a_v_e/?hl=en&source=omni_redirect">
+                <a href="https://www.instagram.com/p_r_a_v_e_e_n__p_r_a_v_e/?hl=en&source=omni_redirect" target="_blank"
+                    aria-label="Instagram">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="https://www.facebook.com/praveen.mukthi.98">
+                <a href="https://www.facebook.com/praveen.mukthi.98" target="_blank" aria-label="Facebook">
                     <i class="fab fa-facebook"></i>
                 </a>
+                <a href="mailto:praveenmukthi@gmail.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
             </div>
-        </div>
-        <div class="info-container">
-            <div id="about" class="fade-in">
+        </nav>
+        <section class="info-container">
+            <section id="about" class="fade-in section-block">
                 <h3>About</h3>
-                <p>A passionate and dedicated Computer Science graduate from IIITDM Kancheepuram with hands-on experience in front-end development, natural language processing, and multitask learning. I thrive on solving complex problems and building intuitive, scalable applications. Skilled in ReactJS, ExpressJs, Angular, MongoDB, Flutter, Python, and Flask, with a strong foundation in multitask learning using the T5 model. Excited to contribute to impactful projects and grow in the tech industry.</p>
-            </div>
+                <div class="content-card">
+                    <p>A passionate and dedicated Computer Science graduate from <strong>IIITDM Kancheepuram</strong>
+                        with hands-on experience in front-end development, natural language processing, and multitask
+                        learning. I thrive on solving complex problems and building intuitive, scalable applications.
+                        Skilled in ReactJS, ExpressJs, Angular, MongoDB, Flutter, Python, and Flask, with a strong
+                        foundation in multitask learning using the T5 model. Excited to contribute to impactful projects
+                        and grow in the tech industry.</p>
+                </div>
+            </section>
 
-            <div id="experience" class="fade-in">
+            <section id="experience" class="fade-in section-block">
                 <h3>Experience</h3>
-                <div class="experience-card">
-                    <h3>Software Engineer
-                    </h3>
-                    <p>Currently working as a SDE Intern at Agneyas Labs, where I'm responsible for building a new company website using WordPress. My work involves creating a responsive and user-friendly design, optimizing performance, and implementing SEO best practices. During this internship, I also learned Angular and contributed to developing internal UI components using the framework.</p>
+                <div class="experience-card card">
+                    <div class="card-header">
+                        <h3>Software Engineer Intern</h3>
+                        <span class="company">Agneyas Labs</span>
+                    </div>
+                    <p>Currently responsible for building a new company website using WordPress. My work involves
+                        creating a responsive and user-friendly design, optimizing performance, and implementing SEO
+                        best practices. Also learned Angular and contributed to developing internal UI components.</p>
+                    <div class="tech-stack">
+                        <span>WordPress</span>
+                        <span>Angular</span>
+                        <span>SEO</span>
+                        <span>CSS3</span>
+                    </div>
                 </div>
-                <div class="experience-card">
-                    <h3>Application Developer</h3>
-                    <p>Worked as an front-end Developer intern in Meister-Gen Technologies Pvt Ltd. An E-Library system,
-                        crafting Android and web applications using Flutter and ReactJS respectively. Employed Flask as the
-                        backend, enabling seamless data management and user interaction</p>
+                <div class="experience-card card">
+                    <div class="card-header">
+                        <h3>Application Developer Intern</h3>
+                        <span class="company">Meister-Gen Technologies</span>
+                    </div>
+                    <p>Developed an E-Library system, crafting Android and web applications using Flutter and ReactJS
+                        respectively. Employed Flask as the backend, enabling seamless data management and user
+                        interaction.</p>
+                    <div class="tech-stack">
+                        <span>Flutter</span>
+                        <span>ReactJS</span>
+                        <span>Flask</span>
+                        <span>Python</span>
+                    </div>
                 </div>
-            </div>
-            <div id="projects" class="fade-in">
+            </section>
+
+            <section id="projects" class="fade-in section-block">
                 <h3>Projects</h3>
-                <div class="projects-card">
-                    <h3> Study of Tasks' Inter-relevance/ Task curation for multi-task fine tuning the T5 model</h3>
-                    <p> Multitask Learning with T5 Model: Conducted a comprehensive study on utilizing the Text-To-Text Transfer
-                        Transformer (T5) model for multitask learning in Natural Language Processing (NLP), focusing on task
-                        inter-relevance and curation for co-training. And enhanced Model Performance: Successfully demonstrated that thoughtful task selection and understanding of
-                        inter-task relevance significantly improve the performance of multitask fine-tuning approaches, enhancing the
-                        adaptability and effectiveness of NLP models across diverse language tasks</p>
+                <div class="projects-card card">
+                    <h3>Multitask Learning with T5 Model</h3>
+                    <p>Conducted a comprehensive study on utilizing the Text-To-Text Transfer Transformer (T5) model for
+                        multitask learning in Natural Language Processing (NLP). Demonstrated that thoughtful task
+                        selection and inter-task relevance significantly improve performance.</p>
+                    <div class="tech-stack">
+                        <span>Python</span>
+                        <span>NLP</span>
+                        <span>T5 Transformer</span>
+                        <span>Deep Learning</span>
+                    </div>
                 </div>
-                <div class="projects-card">
+                <div class="projects-card card">
                     <h3>Quiz App</h3>
-                    <p> Built a full-stack quiz app using React, Node.js, Express, and MongoDB. Implemented user authentication, quiz management, and score tracking with RESTful APIs. Optimized performance and ensured security with CORS and dotenv</p>
+                    <p>Built a full-stack quiz app using React, Node.js, Express, and MongoDB. Implemented user
+                        authentication, quiz management, and score tracking with RESTful APIs.</p>
+                    <div class="tech-stack">
+                        <span>MongoDB</span>
+                        <span>Express</span>
+                        <span>React</span>
+                        <span>Node.js</span>
+                    </div>
                 </div>
-                <div class="projects-card">
+                <div class="projects-card card">
                     <h3>Fake Currency Detection</h3>
-                    <p>Detecting fake currency using the image of the note. Take an image, pre-process it, and detect edges in the note. Find the histogram of gradient features and classify
-                        them using a support vector classifier</p>
+                    <p>Detecting fake currency using image processing. Algorithms involving edge detection and histogram
+                        gradient features classified using a support vector classifier.</p>
+                    <div class="tech-stack">
+                        <span>Python</span>
+                        <span>OpenCV</span>
+                        <span>Machine Learning</span>
+                        <span>SVM</span>
+                    </div>
                 </div>
-                <div class="projects-card">
+                <div class="projects-card card">
                     <h3>Heart Failure Prediction</h3>
-                    <p> Developed a heart failure prediction system using Python. Collected and pre-processed patient data to train a machine learning model using relevant features. Achieved accurate heart failure prediction using the model</p>
+                    <p>Developed a heart failure prediction system using Python. Achieved accurate heart failure
+                        prediction using machine learning models on patient data.</p>
+                    <div class="tech-stack">
+                        <span>Python</span>
+                        <span>Scikit-learn</span>
+                        <span>Data Analysis</span>
+                    </div>
                 </div>
-            </div>
-            <div id="skills" class="fade-in">
+            </section>
+
+            <section id="skills" class="fade-in section-block">
                 <h3>Skills</h3>
-                <div class="skills-card">
+                <div class="skills-card card">
                     <h3>Languages</h3>
-                    <ul>
+                    <ul class="skill-list">
                         <li>Python</li>
                         <li>C/C++</li>
                         <li>Javascript</li>
-                        <li>HTML/HTML5</li>
-                        <li>CSS</li>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
                         <li>Dart</li>
                     </ul>
                 </div>
-                <div class="skills-card">
+                <div class="skills-card card">
                     <h3>Frameworks & Libraries</h3>
-                    <ul>
-                        <li>Reactjs</li>
+                    <ul class="skill-list">
+                        <li>React.js</li>
                         <li>Angular</li>
                         <li>Flutter</li>
+                        <li>Node.js</li>
+                        <li>Express.js</li>
+                        <li>Flask</li>
                     </ul>
                 </div>
-                <div class="skills-card">
-                    <h3>Tools</h3>
-                    <ul>
-                        <li>Wordpress</li>
+                <div class="skills-card card">
+                    <h3>Tools & Databases</h3>
+                    <ul class="skill-list">
+                        <li>MongoDB</li>
+                        <li>Git/GitHub</li>
+                        <li>WordPress</li>
+                        <li>VS Code</li>
                     </ul>
                 </div>
-            </div>
-            <div id="contact"></div>
-        </div>
-    </div>
+            </section>
+
+            <section id="contact" class="fade-in section-block">
+                <h3>Contact</h3>
+                <div class="contact-card card">
+                    <p>Feel free to reach out for collaborations or just a friendly hello</p>
+                    <a href="mailto:praveenmukthi@gmail.com" class="email-btn">praveenmukthi@gmail.com</a>
+                </div>
+            </section>
+        </section>
+    </main>
     <script src="main.js"></script>
 </body>
+
 </html>

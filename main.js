@@ -27,7 +27,7 @@ const navObserver = new IntersectionObserver(
   { threshold: 0.5 }
 );
 
-["about", "experience", "projects", "skills"].forEach(id => {
+["about", "experience", "projects", "skills", "contact"].forEach(id => {
   const section = document.getElementById(id);
   if (section) navObserver.observe(section);
 });
