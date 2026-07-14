@@ -1,3 +1,24 @@
+// Fade-out loader with smooth light blast
+window.addEventListener('load', () => {
+    const loader = document.getElementById('bg-loader');
+    const cube = document.querySelector('.cube-loader');
+    
+    if (loader && cube) {
+        // Wait for the zoomSpin animation to near completion
+        setTimeout(() => {
+            cube.classList.add('blast'); // Triggers the Light Blast
+            
+            // Wait for blast animation (0.8s) to finish for smoothness
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 800);
+        }, 2500); 
+    }
+});
+
 // Fade-in animation
 const fadeObserver = new IntersectionObserver(
   (entries) => {

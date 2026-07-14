@@ -14,20 +14,34 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    <title>Praveen M | Front-End Engineer</title>
+    <link rel="stylesheet" href="loader_styles.css">
+    <title>Praveen Mukthi | AI Engineer & ML Engineer</title>
+    <meta name="description" content="Praveen Mukthi — AI Engineer and Software Developer specializing in Machine Learning, Agentic AI, Digital Twins, and Battery Management Systems.">
 </head>
 
 <body>
+    <div id="bg-loader">
+        <div class="cube-loader">
+            <div class="cube-top"></div>
+            <div>
+                <span style="--i:0"></span>
+                <span style="--i:1"></span>
+                <span style="--i:2"></span>
+                <span style="--i:3"></span>
+            </div>
+        </div>
+    </div>
     <main class="main-container">
         <nav class="nav-container">
             <div class="main-card">
                 <h1>Praveen M</h1>
-                <h2>SDE and Front-End Engineer</h2>
+                <h2>AI Engineer &amp; ML Engineer</h2>
                 <div class="nav-menu">
                     <a href="#about">About</a>
                     <a href="#experience">Experience</a>
-                    <a href="#projects">Works</a>
+                    <a href="#projects">Projects</a>
                     <a href="#skills">Skills</a>
+                    <a href="#education">Education</a>
                     <a href="#contact">Contact</a>
                 </div>
             </div>
@@ -53,12 +67,8 @@
             <section id="about" class="fade-in section-block">
                 <h3>About</h3>
                 <div class="content-card">
-                    <p>A passionate and dedicated Computer Science graduate from <strong>IIITDM Kancheepuram</strong>
-                        with hands-on experience in front-end development, natural language processing, and multitask
-                        learning. I thrive on solving complex problems and building intuitive, scalable applications.
-                        Skilled in ReactJS, ExpressJs, Angular, MongoDB, Flutter, Python, and Flask, with a strong
-                        foundation in multitask learning using the T5 model. Excited to contribute to impactful projects
-                        and grow in the tech industry.</p>
+                    <p>AI Engineer and Software Developer with experience in <strong>Machine Learning</strong>, <strong>Deep Learning</strong>, <strong>Agentic AI Systems</strong>, <strong>Digital Twins</strong>, <strong>Battery Management Systems (BMS)</strong>, and Industrial Analytics. Skilled in building end-to-end AI applications using Python, FastAPI, LangGraph, LangChain, Ollama, Angular, and modern database technologies. Experienced in developing scalable AI systems for manufacturing environments using real-time telemetry and industrial IoT data.
+                    </p>
                 </div>
             </section>
 
@@ -66,32 +76,33 @@
                 <h3>Experience</h3>
                 <div class="experience-card card">
                     <div class="card-header">
-                        <h3>Software Engineer Intern</h3>
-                        <span class="company">Agneyas Labs</span>
+                        <h3>Software Engineer</h3>
+                        <span class="company">Agneyas Labs &mdash; Jul 2025 &ndash; Present</span>
                     </div>
-                    <p>Currently responsible for building a new company website using WordPress. My work involves
-                        creating a responsive and user-friendly design, optimizing performance, and implementing SEO
-                        best practices. Also learned Angular and contributed to developing internal UI components.</p>
+                    <ul class="exp-list">
+                        <li>Developed AI-driven analytics solutions for manufacturing systems using Python, machine learning, and industrial IoT data.</li>
+                        <li>Designed and implemented a Digital Twin framework for Battery Management Systems (BMS) to monitor battery performance and operational behavior in real time.</li>
+                        <li>Built Physics-Informed Neural Network (PINN) models for battery State of Charge (SOC), State of Health (SOH), and degradation prediction.</li>
+                        <li>Developed Agentic AI applications using LangGraph, LangChain, and local LLMs for manufacturing insights and decision support.</li>
+                        <li>Built REST APIs using Flask and FastAPI for AI model deployment and inference.</li>
+                        <li>Integrated InfluxDB, PostgreSQL, MongoDB, and Redis for telemetry storage and retrieval.</li>
+                        <li>Developed Angular-based dashboards for battery analytics, production KPIs, and operational monitoring.</li>
+                        <li>Containerized applications using Docker and deployed scalable AI services.</li>
+                    </ul>
                     <div class="tech-stack">
-                        <span>WordPress</span>
-                        <span>Angular</span>
-                        <span>SEO</span>
-                        <span>CSS3</span>
-                    </div>
-                </div>
-                <div class="experience-card card">
-                    <div class="card-header">
-                        <h3>Application Developer Intern</h3>
-                        <span class="company">Meister-Gen Technologies</span>
-                    </div>
-                    <p>Developed an E-Library system, crafting Android and web applications using Flutter and ReactJS
-                        respectively. Employed Flask as the backend, enabling seamless data management and user
-                        interaction.</p>
-                    <div class="tech-stack">
-                        <span>Flutter</span>
-                        <span>ReactJS</span>
-                        <span>Flask</span>
                         <span>Python</span>
+                        <span>LangGraph</span>
+                        <span>LangChain</span>
+                        <span>FastAPI</span>
+                        <span>Angular</span>
+                        <span>Flask</span>
+                        <span>PINNs</span>
+                        <span>Digital Twins</span>
+                        <span>InfluxDB</span>
+                        <span>PostgreSQL</span>
+                        <span>MongoDB</span>
+                        <span>Redis</span>
+                        <span>Docker</span>
                     </div>
                 </div>
             </section>
@@ -99,47 +110,27 @@
             <section id="projects" class="fade-in section-block">
                 <h3>Projects</h3>
                 <div class="projects-card card">
-                    <h3>Multitask Learning with T5 Model</h3>
-                    <p>Conducted a comprehensive study on utilizing the Text-To-Text Transfer Transformer (T5) model for
-                        multitask learning in Natural Language Processing (NLP). Demonstrated that thoughtful task
-                        selection and inter-task relevance significantly improve performance.</p>
+                    <h3>Face Recognition Platform</h3>
+                    <p>Built a face recognition pipeline using FaceNet embeddings and cosine similarity search. Developed FastAPI services for registration, verification, and recognition workflows. Stored face embeddings in PostgreSQL for efficient similarity-based retrieval and implemented real-time recognition and authentication workflows.</p>
                     <div class="tech-stack">
                         <span>Python</span>
-                        <span>NLP</span>
-                        <span>T5 Transformer</span>
+                        <span>FaceNet</span>
+                        <span>FastAPI</span>
+                        <span>PostgreSQL</span>
+                        <span>Computer Vision</span>
                         <span>Deep Learning</span>
                     </div>
                 </div>
                 <div class="projects-card card">
-                    <h3>Quiz App</h3>
-                    <p>Built a full-stack quiz app using React, Node.js, Express, and MongoDB. Implemented user
-                        authentication, quiz management, and score tracking with RESTful APIs.</p>
-                    <div class="tech-stack">
-                        <span>MongoDB</span>
-                        <span>Express</span>
-                        <span>React</span>
-                        <span>Node.js</span>
-                    </div>
-                </div>
-                <div class="projects-card card">
-                    <h3>Fake Currency Detection</h3>
-                    <p>Detecting fake currency using image processing. Algorithms involving edge detection and histogram
-                        gradient features classified using a support vector classifier.</p>
+                    <h3>Retrieval-Augmented Generation (RAG) Knowledge Assistant</h3>
+                    <p>Developed a Retrieval-Augmented Generation system using local LLMs and vector search. Implemented semantic document retrieval and contextual response generation. Integrated LangChain workflows for document ingestion and querying, and improved response quality through prompt engineering and retrieval optimization.</p>
                     <div class="tech-stack">
                         <span>Python</span>
-                        <span>OpenCV</span>
-                        <span>Machine Learning</span>
-                        <span>SVM</span>
-                    </div>
-                </div>
-                <div class="projects-card card">
-                    <h3>Heart Failure Prediction</h3>
-                    <p>Developed a heart failure prediction system using Python. Achieved accurate heart failure
-                        prediction using machine learning models on patient data.</p>
-                    <div class="tech-stack">
-                        <span>Python</span>
-                        <span>Scikit-learn</span>
-                        <span>Data Analysis</span>
+                        <span>LangChain</span>
+                        <span>RAG</span>
+                        <span>Ollama</span>
+                        <span>Vector Search</span>
+                        <span>Prompt Engineering</span>
                     </div>
                 </div>
             </section>
@@ -147,35 +138,79 @@
             <section id="skills" class="fade-in section-block">
                 <h3>Skills</h3>
                 <div class="skills-card card">
-                    <h3>Languages</h3>
+                    <h3>Programming Languages</h3>
                     <ul class="skill-list">
                         <li>Python</li>
-                        <li>C/C++</li>
-                        <li>Javascript</li>
-                        <li>HTML5</li>
-                        <li>CSS3</li>
-                        <li>Dart</li>
+                        <li>JavaScript</li>
+                        <li>TypeScript</li>
+                        <li>SQL</li>
                     </ul>
                 </div>
                 <div class="skills-card card">
-                    <h3>Frameworks & Libraries</h3>
+                    <h3>Machine Learning &amp; AI</h3>
                     <ul class="skill-list">
-                        <li>React.js</li>
-                        <li>Angular</li>
-                        <li>Flutter</li>
-                        <li>Node.js</li>
-                        <li>Express.js</li>
+                        <li>Machine Learning</li>
+                        <li>Deep Learning</li>
+                        <li>Computer Vision</li>
+                        <li>NLP</li>
+                        <li>Transformers</li>
+                        <li>Predictive Analytics</li>
+                        <li>Time Series Analysis</li>
+                        <li>Physics-Informed Neural Networks (PINNs)</li>
+                        <li>Digital Twins</li>
+                        <li>Anomaly Detection</li>
+                    </ul>
+                </div>
+                <div class="skills-card card">
+                    <h3>LLMs &amp; Agentic AI</h3>
+                    <ul class="skill-list">
+                        <li>LangChain</li>
+                        <li>LangGraph</li>
+                        <li>RAG</li>
+                        <li>Ollama</li>
+                        <li>Hugging Face</li>
+                        <li>Prompt Engineering</li>
+                        <li>Multi-Agent Systems</li>
+                        <li>Tool Calling</li>
+                    </ul>
+                </div>
+                <div class="skills-card card">
+                    <h3>Frameworks</h3>
+                    <ul class="skill-list">
+                        <li>FastAPI</li>
                         <li>Flask</li>
+                        <li>Angular</li>
                     </ul>
                 </div>
                 <div class="skills-card card">
-                    <h3>Tools & Databases</h3>
+                    <h3>Databases</h3>
                     <ul class="skill-list">
+                        <li>InfluxDB</li>
+                        <li>PostgreSQL</li>
                         <li>MongoDB</li>
-                        <li>Git/GitHub</li>
-                        <li>WordPress</li>
-                        <li>VS Code</li>
+                        <li>Redis</li>
                     </ul>
+                </div>
+                <div class="skills-card card">
+                    <h3>Cloud &amp; DevOps</h3>
+                    <ul class="skill-list">
+                        <li>Docker</li>
+                        <li>Git</li>
+                        <li>Linux</li>
+                        <li>REST APIs</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="education" class="fade-in section-block">
+                <h3>Education</h3>
+                <div class="experience-card card">
+                    <div class="card-header">
+                        <h3>IIITDM Kancheepuram</h3>
+                        <span class="company">8.27 CGPA</span>
+                    </div>
+                    <p>Bachelor of Technology, Computer Science and Engineering</p>
+                    <p class="edu-dates">2020 &ndash; 2024</p>
                 </div>
             </section>
 
