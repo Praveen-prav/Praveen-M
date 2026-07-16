@@ -177,14 +177,18 @@ body::before {
     transform: translateY(-3px);
 }
 
-/* Info Right Panel */
 .info-container {
-    padding: 4rem 2rem 4rem 0;
+    padding: 0 2rem 0 0;
 }
 
 .section-block {
-    margin-bottom: 6rem;
-    scroll-margin-top: 4rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    scroll-margin-top: 0;
+    margin-bottom: 0;
+    padding: 4rem 0;
 }
 
 .section-block>h3 {

@@ -33,7 +33,10 @@ const navObserver = new IntersectionObserver((entries) => {
             if (link) link.classList.add('active');
         }
     });
-}, { threshold: 0.4 });
+}, { 
+    rootMargin: '-30% 0px -69% 0px',
+    threshold: 0 
+});
 
 ['about', 'experience', 'projects', 'skills', 'education', 'contact'].forEach(id => {
     const section = document.getElementById(id);
@@ -155,7 +158,11 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
                 
                 // Perform smooth scroll transition
                 const infoContainer = document.querySelector('.info-container');
-                if (infoContainer && infoContainer.scrollHeight > infoContainer.clientHeight) {
+                const isContainerScrollable = infoContainer && 
+                    (window.getComputedStyle(infoContainer).overflowY === 'auto' || 
+                     window.getComputedStyle(infoContainer).overflowY === 'scroll');
+
+                if (isContainerScrollable) {
                     infoContainer.scrollTo({
                         top: targetEl.offsetTop - 30,
                         behavior: 'smooth'
