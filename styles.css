@@ -1,6 +1,9 @@
 :root {
-    --bg-gradient: radial-gradient(circle at top left, #1e1e2f, #0a0a12);
     --accent-color: #64ffda;
+    --bg-base: #0d1117;
+    --bg-grad-1: radial-gradient(ellipse 120% 60% at 50% 0%, hsla(225, 45%, 18%, 0.9) 0%, transparent 70%);
+    --bg-grad-2: radial-gradient(ellipse 60% 50% at 15% 100%, hsla(253, 30%, 14%, 0.6) 0%, transparent 70%);
+    --bg-grad-3: radial-gradient(ellipse 50% 40% at 85% 90%, hsla(280, 25%, 12%, 0.5) 0%, transparent 70%);
     --text-primary: #e6f1ff;
     --text-secondary: #8892b0;
     --card-bg: rgba(255, 255, 255, 0.05);
@@ -22,12 +25,10 @@ html {
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--text-secondary) var(--bg-primary);
-    background: #0d1117;
-    background-image:
-        radial-gradient(ellipse 120% 60% at 50% 0%, hsla(225, 45%, 18%, 0.9) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 50% at 15% 100%, hsla(253, 30%, 14%, 0.6) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 85% 90%, hsla(280, 25%, 12%, 0.5) 0%, transparent 70%);
+    background-color: var(--bg-base);
+    background-image: var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3);
     background-attachment: fixed;
+    transition: background-color 0.8s ease;
 }
 
 body {

@@ -138,3 +138,32 @@ if (emailLink) {
         });
     });
 }
+
+// ─── 6. Click Nav Menu — Time Travel Scroll ────────────────────────────────
+document.querySelectorAll('.nav-menu a').forEach(link => {
+    link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+            const targetEl = document.querySelector(targetId);
+            if (targetEl) {
+                e.preventDefault();
+                
+                // Trigger WebGL Time Travel Warp Speed
+                if (typeof window.triggerTimeTravel === 'function') {
+                    window.triggerTimeTravel(1400); // 1.4-second wormhole duration
+                }
+                
+                // Perform smooth scroll transition
+                const infoContainer = document.querySelector('.info-container');
+                if (infoContainer && infoContainer.scrollHeight > infoContainer.clientHeight) {
+                    infoContainer.scrollTo({
+                        top: targetEl.offsetTop - 30,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    targetEl.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+    });
+});
