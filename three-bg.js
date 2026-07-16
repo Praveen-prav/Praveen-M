@@ -299,9 +299,9 @@
 
         // Scale and orientation: set to a large size suited for screen center
         dragon.scale.set(14, 14, 14);
-        // dragon.rotation.y = Math.PI; // Face forward initially
         dragon.rotation.y = -100 * (Math.PI / 180);
-        dragon.position.set(-30, 5, 0);
+        // Keep local origin at (0,0,0) — world offset handled by dragonGroup in animate loop
+        dragon.position.set(0, 0, 0);
 
         // Apply responsive metallic theme color to non-textured parts
         dragon.traverse((child) => {
@@ -494,7 +494,6 @@
 
     // Scroll listener (both window and local .info-container scrolling)
     const infoContainer = document.querySelector('.info-container');
-    const scrollTarget = infoContainer || window;
 
     function handleScroll() {
         const scrollTop = infoContainer ? infoContainer.scrollTop : window.scrollY;
@@ -520,6 +519,7 @@
         infoContainer.addEventListener('scroll', handleScroll);
     }
     window.addEventListener('scroll', handleScroll);
+
 
     // Handle Window Resize
     window.addEventListener('resize', () => {
@@ -609,19 +609,21 @@
 
         // 2c. Animate dragon (hover, rotate, and respond to mouse parallax)
         if (dragonGroup) {
-            // Hover gently up and down around y = -2
-            dragonGroup.position.y = -2 + Math.sin(time * 0.8) * 1.5;
-            dragonGroup.position.x = 0;
+            const w = window.innerWidth;
+
+            // Responsive X offset:
+            // Laptop / large screen (≥ 1280px): original -30 (left-center of right panel)
+            // Tablet (768–1279px): nudge right into content panel
+            // Mobile (< 768px): perfectly centered
+            dragonGroup.position.x = w >= 1280 ? -30 : w >= 768 ? 10 : 0;
+
+            // Responsive Y baseline:
+            // Laptop (≥ 1280px): hover around y = 5 (original value)
+            // Tablet / Mobile: hover around y = -2 (centered for single-column layout)
+            const yBase = w >= 1280 ? 5 : -2;
+            dragonGroup.position.y = yBase + Math.sin(time * 0.8) * 1.5;
+
             dragonGroup.position.z = 0;
-
-            // // Slow idle rotation around the Y axis, combined with mouse X parallax
-            // dragonGroup.rotation.y = time * 0.15 + mouse.x * 0.45;
-
-            // // Tilt slightly based on mouse Y
-            // dragonGroup.rotation.x = mouse.y * 0.25;
-
-            // // Subtle roll based on mouse X
-            // dragonGroup.rotation.z = -mouse.x * 0.15;
         }
 
         // Animate spaceship trajectory ONLY if it's visible (active as fallback)

@@ -23,8 +23,7 @@
 
 html {
     scroll-behavior: smooth;
-    scrollbar-width: thin;
-    scrollbar-color: var(--text-secondary) var(--bg-primary);
+    scrollbar-width: none;       /* Firefox */
     background-color: var(--bg-base);
     background-image: var(--bg-grad-1), var(--bg-grad-2), var(--bg-grad-3);
     background-attachment: fixed;
@@ -62,9 +61,11 @@ body::before {
     z-index: 0;
 }
 
-/* Scrollbar Style */
+/* Scrollbar Style — hidden but still scrollable */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 0;
+    height: 0;
+    background: transparent;
 }
 
 ::-webkit-scrollbar-track {
@@ -72,8 +73,7 @@ body::before {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
+    background: transparent;
 }
 
 /* Layout */
@@ -506,7 +506,74 @@ body::before {
     transform: translateY(0);
 }
 
-/* Responsive Design */
+/* ─── Hamburger Menu Button ──────────────────────────────────────────────── */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+    border: none;
+    background: transparent;
+    z-index: 1100;
+    position: absolute;
+    top: 2rem;
+    right: 1.5rem;
+}
+
+.hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── Mobile Drawer Nav ──────────────────────────────────────────────────── */
+.mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(13, 17, 23, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 1050;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-nav-overlay.open {
+    display: flex;
+    opacity: 1;
+}
+
+.mobile-nav-overlay a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 1.6rem;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 600;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.mobile-nav-overlay a:hover,
+.mobile-nav-overlay a.active {
+    color: var(--accent-color);
+    transform: scale(1.08);
+}
+
+/* ─── Responsive Design ──────────────────────────────────────────────────── */
 @media screen and (max-width: 968px) {
     .main-container {
         grid-template-columns: 1fr;
@@ -515,63 +582,172 @@ body::before {
     .nav-container {
         height: auto;
         position: relative;
-        padding: 3rem 1.5rem;
+        padding: 2rem 1.5rem 1.5rem;
     }
 
     .info-container {
-        padding: 0 1.5rem 3rem 1.5rem;
+        padding: 0 1.5rem 4rem 1.5rem;
     }
 
+    /* Hide desktop nav links; show hamburger instead */
     .nav-menu {
         display: none;
-        /* Hide nav links on mobile or transform to hamburger if requested */
     }
 
-    .social-media {
-        position: absolute;
-        top: 3rem;
-        right: 1.5rem;
-        margin-top: 0;
-    }
-
-    .main-card h1 {
-        font-size: 3rem;
-    }
-
-    .section-block>h3 {
-        display: block;
-        /* Show section titles on mobile */
-    }
-}
-
-.contact-links {
-    grid-template-columns: 1fr;
-}
-
-.form-row {
-    grid-template-columns: 1fr;
-}
-
-.send-btn {
-    width: 100%;
-    justify-content: center;
-}
-
-
-@media screen and (max-width: 480px) {
-    .main-card h1 {
-        font-size: 2.5rem;
+    .hamburger {
+        display: flex;
     }
 
     .social-media {
         position: relative;
-        margin-top: 2rem;
-        top: 0;
-        right: 0;
+        top: auto;
+        right: auto;
+        margin-top: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .social-media a {
+        font-size: 1.5rem;
+    }
+
+    .main-card h1 {
+        font-size: 2.8rem;
+    }
+
+    .main-card h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .section-block > h3 {
+        display: block;
+    }
+
+    .section-block {
+        min-height: auto;
+        padding: 5rem 0 3rem;
+    }
+
+    .card {
+        padding: 1.5rem;
     }
 
     .card-header {
         flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .contact-links {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .send-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Skills grid tighter on tablet */
+    .skill-list {
+        gap: 0.6rem;
+    }
+
+    .tech-stack {
+        gap: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .main-card h1 {
+        font-size: 2.2rem;
+    }
+
+    .main-card h2 {
+        font-size: 1rem;
+    }
+
+    .section-block {
+        padding: 4rem 0 2.5rem;
+    }
+
+    .section-block > h3 {
+        font-size: 1.6rem;
+    }
+
+    .card {
+        padding: 1.25rem;
+        border-radius: 10px;
+    }
+
+    .card h3 {
+        font-size: 1.15rem;
+    }
+
+    .card p {
+        font-size: 0.92rem;
+    }
+
+    .exp-list {
+        font-size: 0.9rem;
+    }
+
+    .tech-stack span {
+        font-size: 0.72rem;
+        padding: 0.2rem 0.6rem;
+    }
+
+    .skill-list li {
+        font-size: 0.82rem;
+        padding: 0.4rem 0.75rem;
+    }
+
+    .contact-link {
+        padding: 0.85rem 1rem;
+    }
+
+    .contact-link-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 0.9rem;
+    }
+
+    .contact-link-value {
+        font-size: 0.8rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.9rem;
+        padding: 0.75rem 0.9rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav-container {
+        padding: 1.5rem 1.25rem 1rem;
+    }
+
+    .main-card h1 {
+        font-size: 1.9rem;
+    }
+
+    .info-container {
+        padding: 0 1.25rem 3rem 1.25rem;
+    }
+
+    .social-media {
+        gap: 1.2rem;
+    }
+
+    .social-media a {
+        font-size: 1.3rem;
+    }
+
+    .card {
+        padding: 1rem;
     }
 }
 

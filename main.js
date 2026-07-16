@@ -24,24 +24,7 @@ const fadeObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.fade-in, .experience-card, .projects-card, .skills-card')
     .forEach(el => fadeObserver.observe(el));
 
-// ─── Active nav on scroll ──────────────────────────────────────────────────
-const navObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
-            const link = document.querySelector(`.nav-menu a[href="#${entry.target.id}"]`);
-            if (link) link.classList.add('active');
-        }
-    });
-}, { 
-    rootMargin: '-30% 0px -69% 0px',
-    threshold: 0 
-});
 
-['about', 'experience', 'projects', 'skills', 'education', 'contact'].forEach(id => {
-    const section = document.getElementById(id);
-    if (section) navObserver.observe(section);
-});
 
 // ─── 1. Typing animation ───────────────────────────────────────────────────
 const roles = [
@@ -143,34 +126,111 @@ if (emailLink) {
 }
 
 // ─── 6. Click Nav Menu — Time Travel Scroll ────────────────────────────────
+function scrollToSection(targetId) {
+    const targetEl = document.querySelector(targetId);
+    if (!targetEl) return;
+
+    // Trigger WebGL Time Travel Warp Speed
+    if (typeof window.triggerTimeTravel === 'function') {
+        window.triggerTimeTravel(1400);
+    }
+
+    const infoContainer = document.querySelector('.info-container');
+    const isContainerScrollable = infoContainer &&
+        (window.getComputedStyle(infoContainer).overflowY === 'auto' ||
+         window.getComputedStyle(infoContainer).overflowY === 'scroll');
+
+    if (isContainerScrollable) {
+        infoContainer.scrollTo({ top: targetEl.offsetTop - 30, behavior: 'smooth' });
+    } else {
+        targetEl.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
 document.querySelectorAll('.nav-menu a').forEach(link => {
     link.addEventListener('click', (e) => {
         const targetId = link.getAttribute('href');
         if (targetId && targetId.startsWith('#')) {
-            const targetEl = document.querySelector(targetId);
-            if (targetEl) {
-                e.preventDefault();
-                
-                // Trigger WebGL Time Travel Warp Speed
-                if (typeof window.triggerTimeTravel === 'function') {
-                    window.triggerTimeTravel(1400); // 1.4-second wormhole duration
-                }
-                
-                // Perform smooth scroll transition
-                const infoContainer = document.querySelector('.info-container');
-                const isContainerScrollable = infoContainer && 
-                    (window.getComputedStyle(infoContainer).overflowY === 'auto' || 
-                     window.getComputedStyle(infoContainer).overflowY === 'scroll');
+            e.preventDefault();
+            scrollToSection(targetId);
+        }
+    });
+});
 
-                if (isContainerScrollable) {
-                    infoContainer.scrollTo({
-                        top: targetEl.offsetTop - 30,
-                        behavior: 'smooth'
-                    });
-                } else {
-                    targetEl.scrollIntoView({ behavior: 'smooth' });
-                }
+// ─── 7. Hamburger / Mobile Nav ─────────────────────────────────────────────
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const mobileNav    = document.getElementById('mobile-nav');
+
+function openMobileNav() {
+    hamburgerBtn.classList.add('open');
+    mobileNav.classList.add('open');
+    hamburgerBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden'; // prevent background scroll
+}
+
+function closeMobileNav() {
+    hamburgerBtn.classList.remove('open');
+    mobileNav.classList.remove('open');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+}
+
+if (hamburgerBtn && mobileNav) {
+    hamburgerBtn.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.contains('open');
+        isOpen ? closeMobileNav() : openMobileNav();
+    });
+
+    // Close overlay when any mobile link is clicked and scroll to section
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const targetId = link.getAttribute('href');
+            if (targetId && targetId.startsWith('#')) {
+                e.preventDefault();
+                closeMobileNav();
+                // Small delay so overlay closes before scroll
+                setTimeout(() => scrollToSection(targetId), 150);
+            }
+        });
+    });
+
+    // Close overlay on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileNav.classList.contains('open')) closeMobileNav();
+    });
+}
+
+// ─── 8. Sync mobile nav active state with scroll-spy + Wormhole on section change ──
+let sectionObserverReady = false; // skip wormhole on initial page load
+setTimeout(() => { sectionObserverReady = true; }, 500);
+
+const allNavObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            const id = entry.target.id;
+
+            // Desktop nav
+            document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
+            const desktopLink = document.querySelector(`.nav-menu a[href="#${id}"]`);
+            if (desktopLink) desktopLink.classList.add('active');
+
+            // Mobile nav
+            document.querySelectorAll('.mobile-nav-link').forEach(a => a.classList.remove('active'));
+            const mobileLink = document.querySelector(`.mobile-nav-link[href="#${id}"]`);
+            if (mobileLink) mobileLink.classList.add('active');
+
+            // Fire wormhole when a new section enters (skip on initial page load)
+            if (sectionObserverReady && typeof window.triggerTimeTravel === 'function') {
+                window.triggerTimeTravel(900);
             }
         }
     });
+}, {
+    rootMargin: '-30% 0px -69% 0px',
+    threshold: 0
+});
+
+['about', 'experience', 'projects', 'skills', 'education', 'contact'].forEach(id => {
+    const section = document.getElementById(id);
+    if (section) allNavObserver.observe(section);
 });
