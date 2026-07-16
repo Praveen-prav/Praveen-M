@@ -21,6 +21,15 @@
 </head>
 
 <body>
+    <!-- Hidden SVG filter for glass refraction/distortion effect on cards -->
+    <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <filter id="glass-distort" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+                <feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="3" seed="7" result="noise"/>
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+        </defs>
+    </svg>
     <canvas id="three-bg"></canvas>
     <div id="bg-loader">
         <div class="cube-loader">

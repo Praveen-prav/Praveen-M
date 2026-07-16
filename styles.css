@@ -206,25 +206,72 @@ body::before {
     /* Hidden on desktop as per original design intention, visible on mobile */
 }
 
-/* Card Styles (Glassmorphism) */
+/* Card Styles — See-Through Glass with Background Distortion */
 .card {
-    background: var(--card-bg);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
+    position: relative;
+    /* Nearly transparent so the warped background shows through */
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 16px;
     padding: var(--padding-card);
     margin-bottom: 1.5rem;
-    transition: all var(--transition-speed);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),  /* top edge bright line */
+        inset 0 -1px 0 rgba(0, 0, 0, 0.25),        /* bottom edge shadow */
+        0 8px 40px rgba(0, 0, 0, 0.45),
+        0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Glass pane: blurred + distorted backdrop ─────────────────────────── */
+/* backdrop-filter blurs what's behind; SVG filter then displacement-maps  */
+/* those blurred pixels → the background warps like seen through thick glass */
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(6px) brightness(1.08) saturate(1.6);
+    -webkit-backdrop-filter: blur(6px) brightness(1.08) saturate(1.6);
+    filter: url(#glass-distort);
+    border-radius: 16px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── Glossy top-light reflection ─────────────────────────────────────── */
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 50%;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.10) 0%,
+        rgba(255, 255, 255, 0.02) 60%,
+        transparent 100%
+    );
+    border-radius: 16px 16px 0 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Card content must sit above the glass layers */
+.card > * {
+    position: relative;
+    z-index: 1;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: var(--card-shadow);
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.26);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.30),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+        0 16px 56px rgba(0, 0, 0, 0.55),
+        0 0 24px rgba(100, 255, 218, 0.07);
 }
+
 
 .card h3 {
     font-family: var(--font-heading);
