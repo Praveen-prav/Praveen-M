@@ -22,21 +22,32 @@ html {
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--text-secondary) var(--bg-primary);
-}
-
-body {
-    font-family: var(--font-body);
     background: #0d1117;
     background-image:
         radial-gradient(ellipse 120% 60% at 50% 0%, hsla(225, 45%, 18%, 0.9) 0%, transparent 70%),
         radial-gradient(ellipse 60% 50% at 15% 100%, hsla(253, 30%, 14%, 0.6) 0%, transparent 70%),
         radial-gradient(ellipse 50% 40% at 85% 90%, hsla(280, 25%, 12%, 0.5) 0%, transparent 70%);
     background-attachment: fixed;
+}
+
+body {
+    font-family: var(--font-body);
+    background: transparent;
     color: var(--text-primary);
     line-height: 1.6;
     min-height: 100vh;
     --spotlight-x: -999px;
     --spotlight-y: -999px;
+}
+
+#three-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
 }
 
 body::before {
